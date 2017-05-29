@@ -1,0 +1,18 @@
+#
+# Soda: A simple framework for PHP
+#
+
+# macOS
+.DS_Store
+
+# Vim
+.*.sw[a-z]
+
+# PHPStorm
+.idea
+
+# Cached || Compiled
+cache/*
+
+# Composer packages
+vendor/*

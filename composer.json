@@ -1,0 +1,27 @@
+{
+    "name": "vahid/sfasf",
+    "type": "project",
+    "require": {
+        "symfony/http-foundation": "^3.2",
+        "alcaeus/mongo-php-adapter": "^1.1",
+        "doctrine/mongodb-odm": "^1.1",
+        "phroute/phroute": "^2.1",
+        "jenssegers/blade": "^1.1",
+        "filp/whoops": "^2.1"
+    },
+    "provide": {
+        "ext-mongo": "1.6.14"
+    },
+    "authors": [
+        {
+            "name": "Vahid Amiri Motlagh",
+            "email": "vahid.a1996@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Soda\\": "core/"
+        }
+    }
+}
