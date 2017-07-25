@@ -3,7 +3,7 @@
 /**
  * Load composer modules
  */
-if (!file_exists($file = __DIR__. '/vendor/autoload.php')) {
+if (!file_exists($file = __DIR__ . '/vendor/autoload.php')) {
     throw new RuntimeException('Install dependencies to run this script.');
 }
 else
@@ -31,6 +31,19 @@ else
     }
 }
 
+// HACK FOR COMPOSER AUTOLOAD NOT WORKING
+if(ALTERNATIVE_CLASS_LOADER)
+{
+    require_once PROJECT_ROOT_ABS_PATH . '/core/http/Controller.php';
+    require_once PROJECT_ROOT_ABS_PATH . '/core/database/DoctrineMongoDBODM.php';
+    require_once PROJECT_ROOT_ABS_PATH . '/core/database/PHPDataObjects.php';
+    require_once PROJECT_ROOT_ABS_PATH . '/core/presentation/View.php';
+    require_once PROJECT_ROOT_ABS_PATH . '/core/presentation/Renderer.php';
+    require_once PROJECT_ROOT_ABS_PATH . '/core/utility/Helpers.php';
+    require_once PROJECT_ROOT_ABS_PATH . '/core/utility/SQLExecutionException.php';
+}
+//
+
 if(!GZIP_ENABLED || !ob_start("ob_gzhandler")) ob_start();
 
 /**
@@ -41,7 +54,7 @@ $request = Symfony\Component\HttpFoundation\Request::createFromGlobals();
 /**
  * Routes and routing config
  */
-require_once __DIR__ . '/app/routes.php';
+require_once PROJECT_ROOT_ABS_PATH . '/app/routes.php';
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
 try
 {
@@ -51,15 +64,15 @@ catch (Phroute\Phroute\Exception\HttpRouteNotFoundException $e)
 {
     // not found
     header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
-    require_once __DIR__ . '/app/views/error/404.php';
+    require_once PROJECT_ROOT_ABS_PATH . '/app/views/error/404.php';
 }
-catch (\Exception | \ErrorException $e)
+catch (\Exception $e)
 {
     // server error
     if(PRETTY_ERROR_PAGES && ENVIRONMENT == 'prod')
     {
         header( $_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error');
-        require_once __DIR__ . '/app/views/error/500.php';
+        require_once PROJECT_ROOT_ABS_PATH . '/app/views/error/500.php';
     }
     else
     {

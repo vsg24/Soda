@@ -24,8 +24,10 @@ abstract class Controller
         $this->response = new Response();
         $this->view = new View();
 
-        $this->doctrine = new DoctrineMongoDBODM();
-        $this->pdo = new PHPDataObjects();
+        if(MONGO_DB_ENABLED)
+            $this->doctrine = new DoctrineMongoDBODM();
+        if(SQL_DB_ENABLED)
+            $this->pdo = new PHPDataObjects();
     }
 
     public function beforeActionExecution($action_name, $action_arguments) { }

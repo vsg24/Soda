@@ -61,7 +61,7 @@
 
 
 	
-	@yield('content')
+	<?php echo $__env->yieldContent('content'); ?>
 
     <!-- Footer -->
     <footer class="text-center">

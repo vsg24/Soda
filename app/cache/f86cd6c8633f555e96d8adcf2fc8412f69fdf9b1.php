@@ -43,8 +43,14 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li>
-                        <a href="/">Home</a>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Contact</a>
                     </li>
                     <li>
                         <a href="/second">Second Page</a>
@@ -61,7 +67,7 @@
 
 
 	
-	@yield('content')
+	<?php echo $__env->yieldContent('content'); ?>
 
     <!-- Footer -->
     <footer class="text-center">

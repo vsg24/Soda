@@ -8,8 +8,8 @@ class View
 
     function __construct()
     {
-        $templates_path = __DIR__ . '../../../app/views/';
-        $cache_path = __DIR__ . '/../../cache/';
+        $templates_path = PROJECT_ROOT_ABS_PATH . '/app/views/';
+        $cache_path =  PROJECT_ROOT_ABS_PATH . '/app/cache/';
 
         $this->view = new Renderer($templates_path, $cache_path);
     }

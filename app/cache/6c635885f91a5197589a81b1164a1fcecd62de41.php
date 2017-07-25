@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <!-- Header -->
     <header>
         <div class="container" id="maincontent" tabindex="-1">
@@ -15,4 +13,5 @@
             </div>
         </div>
     </header>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

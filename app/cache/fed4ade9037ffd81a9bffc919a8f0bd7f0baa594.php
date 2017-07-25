@@ -1,6 +1,4 @@
-@extends('layouts.master')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <br><br>
     <section id="portfolio">
         <div class="container">
@@ -14,15 +12,16 @@
                 <div class="col-lg-12">
                     <p style="font-size: medium; text-align: center">
                         This is the second page.
-                        Here is a variable passed to the view: <b>Animal: </b>{{ $animal }}
+                        Here is a variable passed to the view: <b>Animal: </b><?php echo e($animal); ?>
+
                     </p>
                     <form method="post">
                         <h3>Test form</h3>
-                        @if(isset($success) && $success)
+                        <?php if(isset($success) && $success): ?>
                             <div class="alert alert-success">
                                 <strong>Success!</strong> Database successfully updated.
                             </div>
-                        @endif
+                        <?php endif; ?>
                         <div class="form-group">
                             <label for="title">Title</label>
                             <input id="title" name="title" type="text" class="form-control" placeholder="Enter a title..." required>
@@ -37,4 +36,5 @@
             </div>
         </div>
     </section>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
