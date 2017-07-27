@@ -77,6 +77,29 @@ abstract class Controller
         return $this->doctrine;
     }
 
+    public function renderError($data): Response {
+        header("HTTP/1.1 500 Internal Server Error");
+        if(is_array($data))
+        {
+            die(json_encode($data));
+        }
+        else
+        {
+            die($data);
+        }
+    }
+
+    public function renderNormal($data): Response {
+        if(is_array($data))
+        {
+            die(json_encode($data));
+        }
+        else
+        {
+            die($data);
+        }
+    }
+
     public function render($template, $data = [], $merge = []) {
         return $this->result($this->getView()->render($template, $data, $merge));
     }
