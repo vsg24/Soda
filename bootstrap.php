@@ -44,6 +44,8 @@ if(ALTERNATIVE_CLASS_LOADER)
 }
 //
 
+session_start();
+
 if(!GZIP_ENABLED || !ob_start("ob_gzhandler")) ob_start();
 
 /**
