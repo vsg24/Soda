@@ -18,6 +18,8 @@ abstract class Controller
     private $doctrine;
     private $pdo;
 
+    private $router;
+
     public function __construct()
     {
         $this->request = Request::createFromGlobals();
@@ -28,6 +30,9 @@ abstract class Controller
             $this->doctrine = new DoctrineMongoDBODM();
         if(SQL_DB_ENABLED)
             $this->pdo = new PHPDataObjects();
+
+        global $router;
+        $this->router = $router;
     }
 
     public function beforeActionExecution($action_name, $action_arguments) { }
@@ -75,6 +80,11 @@ abstract class Controller
     public function getDoctrine()
     {
         return $this->doctrine;
+    }
+
+    public function getRouter()
+    {
+        return $this->router;
     }
 
     public function renderError($data): Response {
