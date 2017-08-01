@@ -91,6 +91,7 @@ abstract class Controller
         header("HTTP/1.1 500 Internal Server Error");
         if(is_array($data))
         {
+            header('Content-Type: application/json');
             die(json_encode($data));
         }
         else
@@ -102,6 +103,7 @@ abstract class Controller
     public function renderNormal($data): Response {
         if(is_array($data))
         {
+            header('Content-Type: application/json');
             die(json_encode($data));
         }
         else
