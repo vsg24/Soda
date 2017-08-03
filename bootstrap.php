@@ -35,7 +35,7 @@ else
 if(ALTERNATIVE_CLASS_LOADER)
 {
     require_once PROJECT_ROOT_ABS_PATH . '/core/http/Controller.php';
-    require_once PROJECT_ROOT_ABS_PATH . '/core/database/DoctrineMongoDBODM.php';
+    require_once PROJECT_ROOT_ABS_PATH . '/core/database/MongoDBClient.php';
     require_once PROJECT_ROOT_ABS_PATH . '/core/database/PHPDataObjects.php';
     require_once PROJECT_ROOT_ABS_PATH . '/core/presentation/View.php';
     require_once PROJECT_ROOT_ABS_PATH . '/core/presentation/Renderer.php';

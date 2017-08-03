@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use MongoDB\BSON\ObjectID;
+use MongoDB\Database;
 use Soda\Core\Http\Controller;
 use App\Models\BlogPost, App\Models\User;
 
@@ -30,25 +32,23 @@ class HomeController extends Controller
             $title = $this->getRequest()->request->get("title");
             $body = $this->getRequest()->request->get("body");
 
-            $dm = $this->getDoctrine()->getDM();
+            $dm = $this->getMongoDB()->getDM();
 
             $user = new User();
+            $user->_id = new ObjectID();
             $user->name = 'John Doe';
             $user->email = 'john.doe@example.com';
 
             // tell Doctrine 2 to save $user on the next flush()
-            $dm->persist($user);
+            $result = $dm->selectCollection('Users')->insertOne((array) $user);
 
-            // create blog post
-            $post = new BlogPost();
-            $post->title = $title;
-            $post->body = $body;
-            $post->createdAt = new \DateTime();
-
-            $user->posts = [$post];
-
-            // store everything to MongoDB
-            $dm->flush();
+            // You may also use arrays
+            $dm->selectCollection('Posts')->insertOne([
+                'title' => $title,
+                'body' => $body,
+                'authorId' => $result->getInsertedId(),
+                'createdAt' => new \DateTime()
+            ]);
 
             return $this->render('second', ['animal' => 'Cat', 'success' => true]);
         }

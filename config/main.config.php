@@ -4,7 +4,7 @@ const ENVIRONMENT = 'dev'; // 'dev' or 'prod'
 const VIEW_ENGINE = 'blade'; // 'blade' or 'php'
 const GZIP_ENABLED = false; // can also be set on web server level
 const PRETTY_ERROR_PAGES = true;
-const ALTERNATIVE_CLASS_LOADER = false; // turn on if you're getting Class Not Found exceptions
+const ALTERNATIVE_CLASS_LOADER = true; // turn on if you're getting Class Not Found exceptions
 const PROJECT_ROOT_ABS_PATH = '/path/to/soda'; // full path to project root without trailing slash
 
 const MONGO_DB_ENABLED = true;

@@ -3,6 +3,7 @@
 namespace Soda\Core\Http;
 
 use Soda\Core\Database\DoctrineMongoDBODM;
+use Soda\Core\Database\MongoDBClient;
 use Soda\Core\Database\PHPDataObjects;
 use Soda\Core\Presentation\View;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,7 @@ abstract class Controller
     private $response;
     private $view;
 
-    private $doctrine;
+    private $mdb;
     private $pdo;
 
     private $router;
@@ -27,7 +28,7 @@ abstract class Controller
         $this->view = new View();
 
         if(MONGO_DB_ENABLED)
-            $this->doctrine = new DoctrineMongoDBODM();
+            $this->mdb = new MongoDBClient();
         if(SQL_DB_ENABLED)
             $this->pdo = new PHPDataObjects();
 
@@ -77,9 +78,9 @@ abstract class Controller
         return $this->pdo;
     }
 
-    public function getDoctrine()
+    public function getMongoDB()
     {
-        return $this->doctrine;
+        return $this->mdb;
     }
 
     public function getRouter()
