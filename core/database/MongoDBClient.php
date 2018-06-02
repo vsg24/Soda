@@ -12,7 +12,13 @@ class MongoDBClient
     {
         $username_password = MONGO_DB_USERNAME != null && MONGO_DB_USERNAME != "" ? MONGO_DB_USERNAME . ':' . MONGO_DB_PASSWORD . '@' : "";
         $host_and_port = MONGO_DB_HOST . ':' . MONGO_DB_PORT;
-        $mongoClient = new Client('mongodb://' . $username_password . $host_and_port);
+        $mongoClient = new Client('mongodb://' . $username_password . $host_and_port, [], [
+            'typeMap' => [
+                'array' => 'array',
+                'document' => 'array',
+                'root' => 'array',
+            ],
+        ]);
 
         $this->dm = $mongoClient->selectDatabase(MONGO_DB_DEFAULT_DATABASE_NAME ?? 'Soda');
     }

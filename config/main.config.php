@@ -21,3 +21,5 @@ const SQL_DB_PORT = '3306'; // mysql default: 3306
 const SQL_DB_USERNAME = 'root';
 const SQL_DB_PASSWORD = '';
 const SQL_DB_DEFAULT_NAME = 'soda';
+
+require_once 'app.config.php';

@@ -14,5 +14,7 @@
 # Cached || Compiled
 cache/*
 
+app/cache/*
+
 # Composer packages
 vendor/*

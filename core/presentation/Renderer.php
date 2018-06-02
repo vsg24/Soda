@@ -24,6 +24,24 @@ class Renderer
         elseif(VIEW_ENGINE == 'blade')
         {
             $blade = new Blade([$this->templates_path], $this->cache_path);
+
+//            $blade->compiler()->directive('smartPersianDate', function ($expression) {
+//
+//                $unixtimestamp = strtotime($expression);
+//                $ret = '';
+//
+//                if($unixtimestamp < strtotime('-30 days'))
+//                {
+//                    $ret = toRelativeDate($unixtimestamp);
+//                }
+//                else
+//                {
+//                    $ret = toRelativeTimeWithDepth($unixtimestamp, 3);
+//                }
+//
+//                return $ret;
+//            });
+
             return $blade->render($template_file_name, $data, $merge);
         }
     }

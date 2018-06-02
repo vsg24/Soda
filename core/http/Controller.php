@@ -2,7 +2,6 @@
 
 namespace Soda\Core\Http;
 
-use Soda\Core\Database\DoctrineMongoDBODM;
 use Soda\Core\Database\MongoDBClient;
 use Soda\Core\Database\PHPDataObjects;
 use Soda\Core\Presentation\View;
@@ -88,27 +87,40 @@ abstract class Controller
         return $this->router;
     }
 
-    public function renderError($data): Response {
+    public function echoError($data): Response {
         header("HTTP/1.1 500 Internal Server Error");
         if(is_array($data))
         {
             header('Content-Type: application/json');
             die(json_encode($data));
-        }
-        else
-        {
+        } else if($data == null) {
+            die();
+        } else {
             die($data);
         }
     }
 
-    public function renderNormal($data): Response {
+    public function echoNormal($data): Response {
         if(is_array($data))
         {
             header('Content-Type: application/json');
             die(json_encode($data));
+        } else if($data == null) {
+            die();
+        } else {
+            die($data);
         }
-        else
+    }
+
+    public function echoHttp($data, $code): Response {
+        http_response_code($code);
+        if(is_array($data))
         {
+            header('Content-Type: application/json');
+            die(json_encode($data));
+        } else if($data == null) {
+            die();
+        } else {
             die($data);
         }
     }

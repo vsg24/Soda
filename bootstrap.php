@@ -1,8 +1,7 @@
 <?php
 
-/**
- * Load composer modules
- */
+use Soda\Core\Presentation\View;
+
 if (!file_exists($file = __DIR__ . '/vendor/autoload.php')) {
     throw new RuntimeException('Install dependencies to run this script.');
 }
@@ -31,6 +30,13 @@ else
     }
 }
 
+if (!file_exists($file = __DIR__ . '/config/names.config.php')) {
+    throw new RuntimeException('The names.php config file must exist in /config');
+}
+else
+{
+    require_once $file;
+}
 // HACK FOR COMPOSER AUTOLOAD NOT WORKING
 if(ALTERNATIVE_CLASS_LOADER)
 {
@@ -42,9 +48,13 @@ if(ALTERNATIVE_CLASS_LOADER)
     require_once PROJECT_ROOT_ABS_PATH . '/core/utility/Helpers.php';
     require_once PROJECT_ROOT_ABS_PATH . '/core/utility/SQLExecutionException.php';
 }
+require_once PROJECT_ROOT_ABS_PATH . '/app/utils/helpers.php';
 //
 
-session_start();
+@ini_set("suhosin.session.cryptdocroot", "Off");
+@ini_set("suhosin.cookie.cryptdocroot", "Off");
+ini_set("session.cookie_domain", "." . MAIN_DOMAIN);
+@session_start();
 
 if(!GZIP_ENABLED || !ob_start("ob_gzhandler")) ob_start();
 
@@ -52,6 +62,7 @@ if(!GZIP_ENABLED || !ob_start("ob_gzhandler")) ob_start();
  * Capture incoming requests, extract request parameters
  */
 $request = Symfony\Component\HttpFoundation\Request::createFromGlobals();
+$view = new View();
 
 /**
  * Routes and routing config
@@ -65,16 +76,16 @@ try
 catch (Phroute\Phroute\Exception\HttpRouteNotFoundException $e)
 {
     // not found
-    header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
-    require_once PROJECT_ROOT_ABS_PATH . '/app/views/error/404.php';
+    header($_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+    //die($view->getViewEngineInstance()->render('error.404'));
 }
 catch (\Exception $e)
 {
     // server error
     if(PRETTY_ERROR_PAGES && ENVIRONMENT == 'prod')
     {
-        header( $_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error');
-        require_once PROJECT_ROOT_ABS_PATH . '/app/views/error/500.php';
+        header($_SERVER["SERVER_PROTOCOL"] . ' 500 Internal Server Error');
+       // die($view->getViewEngineInstance()->render('error.500'));
     }
     else
     {
