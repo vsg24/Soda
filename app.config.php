@@ -1,11 +1,23 @@
 <?php
+date_default_timezone_set('UTC');
 
-const ENVIRONMENT = 'dev'; // 'dev' or 'prod'
+const SITE_TITLE = 'Soda';
+
+const MAIN_DOMAIN = "soda.localhost";
+const MAIN_DOMAIN_PORT = ":8080";
+const SITE_ADDRESS = 'http://optional-subdomain.' . MAIN_DOMAIN . MAIN_DOMAIN_PORT;
+
+const JWT_SECRET = 'your_secret_here';
+
+const USE_CUSTOM_OPEN_SSL_CERT = false;
+const VERIFY_CUSTOM_OPEN_SSL_CERT = false;
+const CUSTOM_OPEN_SSL_CERT_PATH = null;
+
+const ENVIRONMENT = 'prod'; // 'dev' or 'prod'
 const VIEW_ENGINE = 'blade'; // 'blade' or 'php'
 const GZIP_ENABLED = false; // can also be set on web server level
 const PRETTY_ERROR_PAGES = true;
-const ALTERNATIVE_CLASS_LOADER = true; // turn on if you're getting Class Not Found exceptions
-const PROJECT_ROOT_ABS_PATH = '/path/to/soda'; // full path to project root without trailing slash
+const PROJECT_ROOT_ABS_PATH = 'D:/repositories/Soda'; // full path to project root without trailing slash
 
 const MONGO_DB_ENABLED = true;
 const MONGO_DB_HOST = 'localhost';
@@ -22,4 +34,8 @@ const SQL_DB_USERNAME = 'root';
 const SQL_DB_PASSWORD = '';
 const SQL_DB_DEFAULT_NAME = 'soda';
 
-require_once 'app.config.php';
+class DB_CONS {
+    // Define your database table/collection names here
+    public const USERS = "Users";
+    public const POSTS = "Posts";
+}

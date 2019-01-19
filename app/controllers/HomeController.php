@@ -47,10 +47,10 @@ class HomeController extends Controller
             $user->email = 'john.doe@example.com';
 
             // tell Doctrine 2 to save $user on the next flush()
-            $result = $this->dm->selectCollection(USERS)->insertOne((array) $user);
+            $result = $this->dm->selectCollection(\DB_CONS::USERS)->insertOne((array) $user);
 
             // You may also use arrays
-            $this->dm->selectCollection(POSTS)->insertOne([
+            $this->dm->selectCollection(\DB_CONS::POSTS)->insertOne([
                 'title' => $title,
                 'body' => $body,
                 'authorId' => $result->getInsertedId(),

@@ -2,11 +2,17 @@
     "name": "vsg24/soda",
     "type": "project",
     "require": {
+        "php": ">=7.2",
+        "ext-json": "*",
         "symfony/http-foundation": "^3.2",
         "phroute/phroute": "^2.1",
         "jenssegers/blade": "^1.1",
         "filp/whoops": "^2.1",
-        "mongodb/mongodb" : "1.2.0"
+        "mongodb/mongodb" : "1.2.0",
+        "illuminate/database": "^5.7"
+    },
+    "suggest": {
+        "ext-mongodb": "For using MongoDB with Soda"
     },
     "authors": [
         {
@@ -17,7 +23,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "Soda\\": "core/"
+            "Soda\\Core\\": "core/"
         }
     }
 }

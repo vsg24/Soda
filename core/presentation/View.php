@@ -9,7 +9,7 @@ class View
     function __construct()
     {
         $templates_path = PROJECT_ROOT_ABS_PATH . '/app/views/';
-        $cache_path =  PROJECT_ROOT_ABS_PATH . '/app/cache/';
+        $cache_path =  PROJECT_ROOT_ABS_PATH . '/wwwroot/cache/';
 
         $this->view = new Renderer($templates_path, $cache_path);
     }
