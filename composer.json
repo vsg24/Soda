@@ -9,7 +9,8 @@
         "jenssegers/blade": "^1.1",
         "filp/whoops": "^2.1",
         "mongodb/mongodb" : "1.2.0",
-        "illuminate/database": "^5.7"
+        "illuminate/database": "^5.7",
+        "robmorgan/phinx": "^0.10.6"
     },
     "suggest": {
         "ext-mongodb": "For using MongoDB with Soda"

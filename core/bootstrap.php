@@ -9,21 +9,6 @@ if (!file_exists($file = __DIR__ . '/../vendor/autoload.php')) {
 use Soda\Core\Presentation\View;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
-// setup Illuminate\Database
-$capsule = new Capsule;
-$capsule->addConnection([
-    "driver" => SQL_DB_DRIVER_TYPE,
-    "host" => SQL_DB_HOST,
-    "database" => "acl",
-    "username" => SQL_DB_USERNAME,
-    "password" => SQL_DB_PASSWORD
-]);
-// make this Capsule instance available globally.
-$capsule->setAsGlobal();
-// setup the Eloquent ORM.
-$capsule->bootEloquent();
-//
-
 /**
  * Load the required configuration file
  */
@@ -40,6 +25,21 @@ if (!file_exists($file = __DIR__ . '/../app.config.php')) {
         $whoops->register();
     }
 }
+
+// setup Illuminate\Database
+$capsule = new Capsule;
+$capsule->addConnection([
+    "driver" => SQL_DB_DRIVER_TYPE,
+    "host" => SQL_DB_HOST,
+    "database" => "soda",
+    "username" => SQL_DB_USERNAME,
+    "password" => SQL_DB_PASSWORD
+]);
+// make this Capsule instance available globally.
+$capsule->setAsGlobal();
+// setup the Eloquent ORM.
+$capsule->bootEloquent();
+//
 
 if(!file_exists(PROJECT_ROOT_ABS_PATH . '/wwwroot/cache')) {
     mkdir(PROJECT_ROOT_ABS_PATH . '/wwwroot/cache');

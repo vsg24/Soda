@@ -13,7 +13,7 @@ const USE_CUSTOM_OPEN_SSL_CERT = false;
 const VERIFY_CUSTOM_OPEN_SSL_CERT = false;
 const CUSTOM_OPEN_SSL_CERT_PATH = null;
 
-const ENVIRONMENT = 'prod'; // 'dev' or 'prod'
+const ENVIRONMENT = 'dev'; // 'dev' or 'prod'
 const VIEW_ENGINE = 'blade'; // 'blade' or 'php'
 const GZIP_ENABLED = false; // can also be set on web server level
 const PRETTY_ERROR_PAGES = true;
