@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use Illuminate\Database\Schema\Blueprint;
 use MongoDB\BSON\ObjectID;
 use MongoDB\Database;
 use Soda\Core\Http\Controller;
@@ -28,7 +29,7 @@ class HomeController extends Controller
         //https://siipo.la/blog/how-to-use-eloquent-orm-migrations-outside-laravel
         //exec:  vendor/bin/phinx create xxxx
 
-        \Illuminate\Database\Capsule\Manager::schema()->create('users', function ( $table) {
+        \Illuminate\Database\Capsule\Manager::schema()->create('users', function (Blueprint $table) {
 
             $table->increments('id');
 

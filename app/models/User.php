@@ -4,6 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\User
+ *
+ * @property integer $id
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $created_at
+ * @property string $updated_at
+ */
 class User extends Model
 {
     /**
@@ -34,6 +43,5 @@ class User extends Model
     public function todo()
     {
         return $this->hasMany('Todo');
-
     }
 }
