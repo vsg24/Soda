@@ -5,7 +5,7 @@ const SITE_TITLE = 'Soda';
 
 const MAIN_DOMAIN = "soda.localhost";
 const MAIN_DOMAIN_PORT = ":8080";
-const SITE_ADDRESS = 'http://optional-subdomain.' . MAIN_DOMAIN . MAIN_DOMAIN_PORT;
+const SITE_ADDRESS = 'http://' . MAIN_DOMAIN . MAIN_DOMAIN_PORT;
 
 const JWT_SECRET = 'your_secret_here';
 
@@ -17,7 +17,8 @@ const ENVIRONMENT = 'dev'; // 'dev' or 'prod'
 const VIEW_ENGINE = 'blade'; // 'blade' or 'php'
 const GZIP_ENABLED = false; // can also be set on web server level
 const PRETTY_ERROR_PAGES = true;
-const PROJECT_ROOT_ABS_PATH = 'D:/repositories/Soda'; // full path to project root without trailing slash
+//const PROJECT_ROOT_ABS_PATH = 'D:/repositories/Soda'; // full path to project root without trailing slash
+const PROJECT_ROOT_ABS_PATH = '/Users/vahid/dev/PHP Projects/Soda';
 
 const MONGO_DB_ENABLED = true;
 const MONGO_DB_HOST = 'localhost';

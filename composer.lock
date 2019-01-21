@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "97f38d5a83dc4e35768df9fa5040ec4c",
+    "content-hash": "eb5c1c67ded0c96c267c6d8a1e2743a1",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -2018,7 +2018,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2",
+        "php": ">=7.1",
         "ext-json": "*"
     },
     "platform-dev": []

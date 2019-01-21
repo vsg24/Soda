@@ -2,7 +2,7 @@
     "name": "vsg24/soda",
     "type": "project",
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.1",
         "ext-json": "*",
         "symfony/http-foundation": "^3.2",
         "phroute/phroute": "^2.1",
